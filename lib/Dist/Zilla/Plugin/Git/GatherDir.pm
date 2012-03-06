@@ -7,12 +7,11 @@ package Dist::Zilla::Plugin::Git::GatherDir;
 use Moose;
 use Moose::Autobox;
 use MooseX::Types::Path::Class qw(Dir File);
-with 'Dist::Zilla::Role::FileGatherer';
+#with 'Dist::Zilla::Role::FileGatherer';
 with 'Dist::Zilla::Role::Git::Repo';
-
-use ExtUtils::Manifest;
+extends 'Dist::Zilla::Plugin::GatherDir';
 use Git::Wrapper;
-
+use Data::Dumper;
 use File::Find::Rule;
 use File::HomeDir;
 use File::Spec;
@@ -20,61 +19,45 @@ use Path::Class;
 
 use namespace::autoclean;
 
-has root => (
-    is   => 'ro',
-    isa  => Dir,
-    lazy => 1,
-    coerce   => 1,
-    required => 1,
-    default  => sub { shift->zilla->root },
-);
+override gather_files => sub {
+  my ($self) = @_;
 
-has prefix => (
-    is  => 'ro',
-    isa => 'Str',
-    default => '',
-);
+  my $root = "" . $self->root;
+  $root =~ s{^~([\\/])}{File::HomeDir->my_home . $1}e;
+  $root = Path::Class::dir($root);
 
+  my @files;
+  my $git  = Git::Wrapper->new( $self->repo_root );
+  FILE: for my $filename ($git->ls_files()) {
+    my $file = file($filename)->relative($root);
 
-sub gather_files {
-    my ($self) = @_;
-
-    my $git  = Git::Wrapper->new( $self->repo_root );
-    my @filepaths = $git->ls_files();
-print Dumper \@filepaths; exit;
-    my @files;
-    FILE: for my $filename (@filepaths) {
-        push @files, $self->_file_from_filename($filename);
+    unless ($self->include_dotfiles) {
+      next FILE if $file->basename =~ qr/^\./;
+      next FILE if grep { /^\.[^.]/ } $file->dir->dir_list;
     }
 
-    my $root = "" . $self->root;
-    $root =~ s{^~([\\/])}{File::HomeDir->my_home . $1}ex;
-    $root = Path::Class::dir($root);
+    my $exclude_regex = qr/\000/;
+    $exclude_regex = qr/$exclude_regex|$_/
+      for ($self->exclude_match->flatten);
+    # \b\Q$_\E\b should also handle the `eq` check
+    $exclude_regex = qr/$exclude_regex|\b\Q$_\E\b/
+      for ($self->exclude_filename->flatten);
+    next if $file =~ $exclude_regex;
 
-    for my $file (@files) {
-        (my $newname = $file->name) =~ s{\A\Q$root\E[\\/]}{}gx;
-        $newname = File::Spec->catdir($self->prefix, $newname) if $self->prefix;
-        $newname = Path::Class::dir($newname)->as_foreign('Unix')->stringify;
+    push @files, $self->_file_from_filename($filename);
+  }
 
-        $file->name($newname);
-        $self->add_file($file);
-    }
+  for my $file (@files) {
+    (my $newname = $file->name) =~ s{\A\Q$root\E[\\/]}{}g;
+    $newname = File::Spec->catdir($self->prefix, $newname) if $self->prefix;
+    $newname = Path::Class::dir($newname)->as_foreign('Unix')->stringify;
 
-    return;
-}
+    $file->name($newname);
+    $self->add_file($file);
+  }
 
-sub _file_from_filename {
-    my ($self, $filename) = @_;
-
-    unless (-f $filename) {
-        $self->log_fatal("Cannot read file from manifest: ", $filename);
-    }
-
-    return Dist::Zilla::File::OnDisk->new({
-        name => $filename,
-        mode => (stat $filename)[2] & oct(755), # kill world-writeability
-    });
-}
+  return;
+};
 
 __PACKAGE__->meta->make_immutable;
 no Moose;

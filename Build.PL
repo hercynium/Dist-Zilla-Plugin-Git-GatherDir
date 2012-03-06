@@ -21,15 +21,15 @@ my %module_build_args = (
     "Stephen R. Scaffidi <sscaffid\@akamai.com>"
   ],
   "dist_name" => "Dist-Zilla-Plugin-Git-GatherDir",
-  "dist_version" => "0.001",
+  "dist_version" => "0.0.1_001",
   "license" => "perl",
   "module_name" => "Dist::Zilla::Plugin::Git::GatherDir",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "Dist::Zilla::Role::FileGatherer" => 0,
+    "Data::Dumper" => 0,
+    "Dist::Zilla::Plugin::GatherDir" => 0,
     "Dist::Zilla::Role::Git::Repo" => 0,
-    "ExtUtils::Manifest" => 0,
     "File::Find::Rule" => 0,
     "File::HomeDir" => 0,
     "File::Spec" => 0,

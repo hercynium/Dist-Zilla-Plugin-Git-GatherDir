@@ -26,9 +26,9 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::Plugin::Git::GatherDir",
   "PREREQ_PM" => {
-    "Dist::Zilla::Role::FileGatherer" => 0,
+    "Data::Dumper" => 0,
+    "Dist::Zilla::Plugin::GatherDir" => 0,
     "Dist::Zilla::Role::Git::Repo" => 0,
-    "ExtUtils::Manifest" => 0,
     "File::Find::Rule" => 0,
     "File::HomeDir" => 0,
     "File::Spec" => 0,
@@ -41,7 +41,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.001",
+  "VERSION" => "0.0.1_001",
   "test" => {
     "TESTS" => "t/*.t"
   }

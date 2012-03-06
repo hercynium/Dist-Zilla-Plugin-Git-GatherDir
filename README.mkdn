@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Git::GatherDir - uses git ls-files to decide what to gather
 
 # VERSION
 
-version 0.001
+version 0.0.1_001
 
 # AUTHOR
 
@@ -19,15 +19,10 @@ the same terms as the Perl 5 programming language system itself.
 
 # EXTENDS
 
-- [Moose::Object](http://search.cpan.org/perldoc?Moose::Object)
+- [Dist::Zilla::Plugin::GatherDir](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::GatherDir)
 
 # CONSUMES
 
-- [Dist::Zilla::Role::FileGatherer](http://search.cpan.org/perldoc?Dist::Zilla::Role::FileGatherer)
-- [Dist::Zilla::Role::Plugin](http://search.cpan.org/perldoc?Dist::Zilla::Role::FileInjector)
-- [Dist::Zilla::Role::Plugin](http://search.cpan.org/perldoc?Dist::Zilla::Role::Plugin)
-- [Dist::Zilla::Role::ConfigDumper](http://search.cpan.org/perldoc?Dist::Zilla::Role::ConfigDumper)
-- [Dist::Zilla::Role::FileInjector](http://search.cpan.org/perldoc?Dist::Zilla::Role::FileInjector)
 - [Dist::Zilla::Role::Git::Repo](http://search.cpan.org/perldoc?Dist::Zilla::Role::Git::Repo)
 
 # SUPPORT
