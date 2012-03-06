@@ -1,4 +1,6 @@
 
+Dist-Zilla-Plugin-Git-GatherDir-*
+
 # Version control files and dirs.
 RCS
 CVS
