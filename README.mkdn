@@ -1,0 +1,125 @@
+# NAME
+
+Dist::Zilla::Plugin::Git::GatherDir - uses git ls-files to decide what to gather for the build
+
+# VERSION
+
+version 0.001
+
+# AUTHOR
+
+Stephen R. Scaffidi <sscaffid@akamai.com>
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2012 by Akamai Technologies.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+# EXTENDS
+
+- [Moose::Object](http://search.cpan.org/perldoc?Moose::Object)
+
+# CONSUMES
+
+- [Dist::Zilla::Role::FileGatherer](http://search.cpan.org/perldoc?Dist::Zilla::Role::FileGatherer)
+- [Dist::Zilla::Role::Plugin](http://search.cpan.org/perldoc?Dist::Zilla::Role::FileInjector)
+- [Dist::Zilla::Role::Plugin](http://search.cpan.org/perldoc?Dist::Zilla::Role::Plugin)
+- [Dist::Zilla::Role::ConfigDumper](http://search.cpan.org/perldoc?Dist::Zilla::Role::ConfigDumper)
+- [Dist::Zilla::Role::FileInjector](http://search.cpan.org/perldoc?Dist::Zilla::Role::FileInjector)
+- [Dist::Zilla::Role::Git::Repo](http://search.cpan.org/perldoc?Dist::Zilla::Role::Git::Repo)
+
+# SUPPORT
+
+## Perldoc
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc Dist::Zilla::Plugin::Git::GatherDir
+
+## Websites
+
+The following websites have more information about this module, and may be of help to you. As always,
+in addition to those websites please use your favorite search engine to discover more resources.
+
+- MetaCPAN
+
+A modern, open-source CPAN search engine, useful to view POD in HTML format.
+
+[http://metacpan.org/release/Dist-Zilla-Plugin-Git-GatherDir](http://metacpan.org/release/Dist-Zilla-Plugin-Git-GatherDir)
+
+- Search CPAN
+
+The default CPAN search engine, useful to view POD in HTML format.
+
+[http://search.cpan.org/dist/Dist-Zilla-Plugin-Git-GatherDir](http://search.cpan.org/dist/Dist-Zilla-Plugin-Git-GatherDir)
+
+- RT: CPAN's Bug Tracker
+
+The RT ( Request Tracker ) website is the default bug/issue tracking system for CPAN.
+
+[http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dist-Zilla-Plugin-Git-GatherDir](http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dist-Zilla-Plugin-Git-GatherDir)
+
+- AnnoCPAN
+
+The AnnoCPAN is a website that allows community annotations of Perl module documentation.
+
+[http://annocpan.org/dist/Dist-Zilla-Plugin-Git-GatherDir](http://annocpan.org/dist/Dist-Zilla-Plugin-Git-GatherDir)
+
+- CPAN Ratings
+
+The CPAN Ratings is a website that allows community ratings and reviews of Perl modules.
+
+[http://cpanratings.perl.org/d/Dist-Zilla-Plugin-Git-GatherDir](http://cpanratings.perl.org/d/Dist-Zilla-Plugin-Git-GatherDir)
+
+- CPAN Forum
+
+The CPAN Forum is a web forum for discussing Perl modules.
+
+[http://cpanforum.com/dist/Dist-Zilla-Plugin-Git-GatherDir](http://cpanforum.com/dist/Dist-Zilla-Plugin-Git-GatherDir)
+
+- CPANTS
+
+The CPANTS is a website that analyzes the Kwalitee ( code metrics ) of a distribution.
+
+[http://cpants.perl.org/dist/overview/Dist-Zilla-Plugin-Git-GatherDir](http://cpants.perl.org/dist/overview/Dist-Zilla-Plugin-Git-GatherDir)
+
+- CPAN Testers
+
+The CPAN Testers is a network of smokers who run automated tests on uploaded CPAN distributions.
+
+[http://www.cpantesters.org/distro/D/Dist-Zilla-Plugin-Git-GatherDir](http://www.cpantesters.org/distro/D/Dist-Zilla-Plugin-Git-GatherDir)
+
+- CPAN Testers Matrix
+
+The CPAN Testers Matrix is a website that provides a visual overview of the test results for a distribution on various Perls/platforms.
+
+[http://matrix.cpantesters.org/?dist=Dist-Zilla-Plugin-Git-GatherDir](http://matrix.cpantesters.org/?dist=Dist-Zilla-Plugin-Git-GatherDir)
+
+- CPAN Testers Dependencies
+
+The CPAN Testers Dependencies is a website that shows a chart of the test results of all dependencies for a distribution.
+
+[http://deps.cpantesters.org/?module=Dist::Zilla::Plugin::Git::GatherDir](http://deps.cpantesters.org/?module=Dist::Zilla::Plugin::Git::GatherDir)
+
+## Bugs / Feature Requests
+
+Please report any bugs or feature requests by email to `bug-dist-zilla-plugin-git-gatherdir at rt.cpan.org`, or through
+the web interface at [http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dist-Zilla-Plugin-Git-GatherDir](http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dist-Zilla-Plugin-Git-GatherDir). You will be automatically notified of any
+progress on the request by the system.
+
+## Source Code
+
+The code is open to the world, and available for you to hack on. Please feel free to browse it and play
+with it, or whatever. If you want to contribute patches, please send me a diff or prod me to pull
+from your repository :)
+
+[https://github.com/Hercynium/Dist-Zilla-Plugin-Git-GatherDir](https://github.com/Hercynium/Dist-Zilla-Plugin-Git-GatherDir)
+
+    git clone https://github.com/Hercynium/Dist-Zilla-Plugin-Git-GatherDir.git
+
+# BUGS
+
+Please report any bugs or feature requests to bug-dist-zilla-plugin-git-gatherdir@rt.cpan.org or through the web interface at:
+ http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-Git-GatherDir
